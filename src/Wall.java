@@ -2,29 +2,31 @@ public class Wall {
     private double width;
     private double height;
     
-    public Wall(double width, double height) {
+    public Wall(double width, double height) throws BadWidthException, BadHeightException {
         this.width = width;
+        
+        if (width <= 0) {
+            throw new BadWidthException("Width must be greater than zero!");
+        }
+        
         this.height = height;
+        
+        if (height <= 0){
+            throw new BadHeightException("Height must be greater than zero!");
+        }
     }
     
     public double getWidth() {
         return width;
     }
     
-    public double getHeight() throws Exception {
-        //return height;
-        return Double.parseDouble("Hello");
-
+    public double getHeight() {
+        return height;
     }
     
     public double getArea() {
-        double area = 0;
-        try {
-         area =  getWidth() * getHeight();
-        
-        } catch (Exception e) {
-            System.out.println("Oops");
-        }
-        return area;
+
+      return getWidth() * getHeight();
+
     }
 }

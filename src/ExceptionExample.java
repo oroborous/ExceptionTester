@@ -18,7 +18,7 @@ public class ExceptionExample {
             System.out.println("Enter a number: ");
             String numberString = scanner.nextLine();
             try {
-            i = Integer.parseInt(numberString);
+                i = Integer.parseInt(numberString);
             } catch (NumberFormatException e){
                 
             }

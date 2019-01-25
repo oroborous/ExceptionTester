@@ -4,12 +4,12 @@ public class PaintCalculator {
     }
     
     public PaintCalculator() {
-        Room room = new Room(10,8,9);
         try {
-            System.out.println(room.getArea());
-        }
-        catch (NumberFormatException e){
-            System.out.println("You did a bad thing");
-        }
+        Room room = new Room(-10,8,9);
+        room.getArea();
+        } catch (BadWidthException | BadHeightException e){
+            System.out.println("No negative dimensions");
+        } 
+        
     }
 }

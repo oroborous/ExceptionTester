@@ -5,7 +5,7 @@ public class Room {
     
     private ArrayList<Wall> wallList;
     
-    public Room(double length, double width, double height){
+    public Room(double length, double width, double height) throws BadWidthException, BadHeightException{
         wallList = new ArrayList<Wall>();
         
         Wall wallA = new Wall(length, height);

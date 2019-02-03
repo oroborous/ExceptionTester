@@ -1,13 +1,20 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room {
-    
+public class Room implements Serializable {
+
     private ArrayList<Wall> wallList;
-    
-    public Room(double length, double width, double height) throws BadWidthException, BadHeightException{
+
+    private transient int roomNumber;
+
+    private static int roomCount = 0;
+
+    public Room(double length, double width, double height) throws BadWidthException, BadHeightException {
+        roomNumber = ++roomCount;
+
         wallList = new ArrayList<Wall>();
-        
+
         Wall wallA = new Wall(length, height);
         wallList.add(wallA);
         Wall wallB = new Wall(length, height);
@@ -17,15 +24,23 @@ public class Room {
         Wall wallD = new Wall(width, height);
         wallList.add(wallD);
     }
-    
+
     public double getArea() {
         double area = 0;
-        
+
         for (int i = 0; i < wallList.size(); i++) {
             Wall w = wallList.get(i);
             area += w.getArea();
         }
-        
+
         return area;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Room # ").append(roomNumber).append("\n");
+        sb.append("Area: ").append(getArea()).append("\n");
+        return sb.toString();
     }
 }

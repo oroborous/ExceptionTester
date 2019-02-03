@@ -25,7 +25,9 @@ public class RoomWriter {
         } finally {
             // Close the file
             try {
-                oos.close();
+                if (oos != null) {
+                    oos.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

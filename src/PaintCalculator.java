@@ -48,6 +48,10 @@ public class PaintCalculator {
     }
 
     private void printRooms() {
+        if (roomList.isEmpty()) {
+            System.out.println("No rooms yet");
+        }
+
         for (Room room : roomList) {
             System.out.println(room.toString());
         }

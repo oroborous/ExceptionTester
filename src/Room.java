@@ -11,8 +11,6 @@ public class Room implements Serializable {
     private static int roomCount = 0;
 
     public Room(double length, double width, double height) throws BadWidthException, BadHeightException {
-        roomNumber = ++roomCount;
-
         wallList = new ArrayList<Wall>();
 
         Wall wallA = new Wall(length, height);
@@ -23,6 +21,8 @@ public class Room implements Serializable {
         wallList.add(wallC);
         Wall wallD = new Wall(width, height);
         wallList.add(wallD);
+
+        roomNumber = ++roomCount;
     }
 
     public double getArea() {
@@ -39,7 +39,7 @@ public class Room implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Room # ").append(roomNumber).append("\n");
+        sb.append("Room #").append(roomNumber).append("\n");
         sb.append("Area: ").append(getArea()).append("\n");
         return sb.toString();
     }

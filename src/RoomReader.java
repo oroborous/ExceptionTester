@@ -8,8 +8,8 @@ import java.util.List;
 
 public class RoomReader {
 
-    public List<Room> readRoomFile(String fileName) {
-        List<Room> roomList = new ArrayList<Room>();
+    public List<Paintable> readRoomFile(String fileName) {
+        List<Paintable> roomList = new ArrayList<Paintable>();
         ObjectInputStream ois = null;
 
         try {

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class PaintCalculator {
 
-    private List<Room> roomList = new ArrayList<Room>();
+    private List<Paintable> roomList = new ArrayList<Paintable>();
     private Scanner keyboard;
 
     public static void main(String[] args) {
@@ -28,15 +28,18 @@ public class PaintCalculator {
                         createRoom();
                         break;
                     case 2:
-                        writeFile();
+                        createFence();
                         break;
                     case 3:
-                        readFile();
+                        writeFile();
                         break;
                     case 4:
-                        printRooms();
+                        readFile();
                         break;
                     case 5:
+                        printRooms();
+                        break;
+                    case 6:
                         System.out.println("Goodbye");
                         System.exit(0);
                 }
@@ -46,13 +49,18 @@ public class PaintCalculator {
         }
 
     }
+    
+    private void createFence() {
+        Fence fence = new Fence();
+        roomList.add(fence);
+    }
 
     private void printRooms() {
         if (roomList.isEmpty()) {
             System.out.println("No rooms yet");
         }
 
-        for (Room room : roomList) {
+        for (Paintable room : roomList) {
             System.out.println(room.toString());
         }
     }
@@ -60,10 +68,11 @@ public class PaintCalculator {
     private void printMenu() {
         System.out.println();
         System.out.println("1. Add room");
-        System.out.println("2. Write rooms to file");
-        System.out.println("3. Read rooms from file");
-        System.out.println("4. View rooms");
-        System.out.println("5. Exit");
+        System.out.println("2. Add fence");
+        System.out.println("3. Write rooms to file");
+        System.out.println("4. Read rooms from file");
+        System.out.println("5. View rooms");
+        System.out.println("6. Exit");
         System.out.println();
     }
 

@@ -2,13 +2,15 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room implements Serializable {
+public class Room implements Serializable, Paintable {
 
     private ArrayList<Wall> wallList;
 
     private transient int roomNumber;
 
     private static int roomCount = 0;
+    
+    private static final int SQUARE_FEET_PER_GALLON = 400;
 
     public Room(double length, double width, double height) throws BadWidthException, BadHeightException {
         wallList = new ArrayList<Wall>();
@@ -42,5 +44,17 @@ public class Room implements Serializable {
         sb.append("Room #").append(roomNumber).append("\n");
         sb.append("Area: ").append(getArea()).append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public double getPremiumCost() {
+        double cost = getArea() / SQUARE_FEET_PER_GALLON * PREMIUM_PAINT_COST_PER_GALLON;
+        return cost;
+    }
+
+    @Override
+    public double getStandardCost() {
+        double cost = getArea() / SQUARE_FEET_PER_GALLON * STANDARD_PAINT_COST_PER_GALLON;
+        return cost;
     }
 }

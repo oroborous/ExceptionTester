@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RoomWriter {
 
-    public void writeRoomFile(String fileName, List<Room> roomList) {
+    public void writeRoomFile(String fileName, List<Paintable> roomList) {
         ObjectOutputStream oos = null;
 
         try {
@@ -15,7 +15,7 @@ public class RoomWriter {
             oos = new ObjectOutputStream(fos);
 
             // Write the objects
-            for (Room room : roomList) {
+            for (Paintable room : roomList) {
                 oos.writeObject(room);
             }
 
